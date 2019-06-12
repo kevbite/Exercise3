@@ -2,6 +2,13 @@ pool:
   vmImage: 'windows-2019'
 
 steps:
+  - task: DownloadSecureFile@1
+    inputs:
+      secureFile: production-keys.csv
+      
   - powershell: ./build.ps1
     displayName: 'Build'
-    
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathtoPublish: '$(Agent.TempDirectory)' 
