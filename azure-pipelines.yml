@@ -1,6 +1,10 @@
 pool:
   vmImage: 'windows-2019'
 
+variables:
+  - group: 'Secure Variable Group'
+
+
 steps:
   - task: DownloadSecureFile@1
     inputs:
