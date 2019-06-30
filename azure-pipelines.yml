@@ -4,7 +4,6 @@ pool:
 variables:
   - group: 'Secure Variable Group'
 
-
 steps:
   - task: DownloadSecureFile@1
     inputs:
@@ -12,6 +11,8 @@ steps:
       
   - powershell: ./build.ps1
     displayName: 'Build'
+    env:
+      API_KEY: $(API_KEY)
 
   - task: PublishBuildArtifacts@1
     inputs:
